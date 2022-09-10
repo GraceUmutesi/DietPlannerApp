@@ -1,0 +1,104 @@
+.footer {
+    background-color: rgba($color: #2ecc70, $alpha: 1) !important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 100px;
+    padding-right: 100px;
+    color: rgba($color: #ffffff, $alpha: 0.9) !important;
+    position:fixed;
+    bottom:0;
+    width: 100%;
+}
+
+.footer p {
+    font-weight: 300;
+    color: rgba($color: #ffffff, $alpha: 0.9) !important;
+}
+
+.logo {
+    cursor: pointer;
+}
+
+.footer a {
+    font-weight: 300;
+    color: rgba($color: #ffffff, $alpha: 0.80) !important;
+}
+
+.logo p {
+    color: #2ecc70 !important;
+}
+
+.footer-links span {
+    cursor: pointer;
+}
+
+.footer-links span:hover {
+    text-decoration: underline;
+    color: rgba($color: #ffffff, $alpha: 0.9) !important;
+}
+
+.footer-links a:hover {
+    color: rgba($color: #ffffff, $alpha: 0.9) !important;
+}
+
+#logo-light {
+    background-color: rgba($color: #000000, $alpha: 0)!important;
+}
+
+.social-media-links {
+    margin-top: 50px;
+}
+
+.social-media-links ul {
+    list-style: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 0 !important;
+}
+
+.social-media-links ul li {
+    padding: 5px;
+    margin-left: 5px;
+}
+
+#linkedin, #youtube, #twitter, #facebook, #instagram {
+    font-size: 1.4em;
+    color: rgba($color: #ffffff, $alpha: 0.9) !important;
+}
+
+#linkedin:hover {
+    color: #2867b1 !important;
+}
+
+#youtube:hover {
+    color: #fc1d00 !important;
+}
+
+#twitter:hover {
+    color: #1da1f2 !important;
+}
+
+#facebook:hover {
+    color: #4267b3 !important;
+}
+
+#instagram:hover {
+    color: #fb3958 !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .footer {
+        background-color: rgba($color: #2ecc70, $alpha: 1) !important;
+        padding-top: 30px;
+        padding-bottom: 3px;
+        padding-left: 10px;
+        padding-right: 10px;
+        color: rgba($color: #ffffff, $alpha: 0.9) !important;
+    }
+
+    .social-media-links {
+        margin-top: 30px;
+    }
+}
+ 

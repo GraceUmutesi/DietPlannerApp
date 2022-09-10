@@ -1,0 +1,62 @@
+<div id="body" class="ptop-component pbottom-component">
+  <div class="title-section" id="title-section">
+    <h1>Login</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+      <form id="contact-form" [formGroup]="loginForm">
+        <div class="form-wrapper">
+          <div class="mb-3">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput type="email" formControlName="username">
+              <mat-hint>Enter your e-mail</mat-hint>
+              <mat-error *ngIf="!loginForm.get('username').valid">
+                Please enter a valid email address
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="mb-3">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Password</mat-label>
+              <input matInput type="{{passwordVisible ? 'text' : 'password'}}" formControlName="password">
+              <mat-icon matSuffix (click)="passwordVisible = !passwordVisible">{{passwordVisible ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <mat-hint>Enter your password</mat-hint>
+              <mat-error *ngIf="!loginForm.get('password').valid">
+                Please enter your password
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="send-btn-wrapper" *ngIf="!isLoading">
+            <div class="row">
+              <div class="col-md-6">
+                <button *ngIf="!isLoading" mat-raised-button color="primary" (click)="login()"
+                  [disabled]="!loginForm.valid">LOGIN</button>
+                <mat-spinner diameter="30" class="loading-indicator" *ngIf="isLoading"></mat-spinner>
+              </div>
+              <div class="col-md-6 signup-link">
+                <a routerLink="/signup">Sign Up</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert alert-danger mtop-15" role="alert" *ngIf="loginError">
+            Something went wrong, please try again
+          </div>
+
+          <div class="alert alert-success mtop-15" role="alert" *ngIf="loginSuccess">
+            You have logged in successfully!!
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-5">
+
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
+

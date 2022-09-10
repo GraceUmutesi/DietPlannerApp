@@ -1,0 +1,48 @@
+
+.top-section {
+  width: 100%;
+  padding-top: 210px;
+  // padding-bottom: 120px;
+  min-height: 600px !important;
+  background-size: cover;
+  background-color: rgba($color: #000, $alpha: 0.1);
+  background-image: url('../../assets/img/healthy-eating-2.jpeg');
+}
+
+.title-one {
+  font-size: 3.5em;
+}
+
+.title-two {
+  font-size: 2.5em;
+}
+
+.how-it-works-section h3 {
+  font-weight: 400;
+}
+
+.main-button {
+  display: inline-block;
+  padding: 10px 40px;
+  background-color: #2ecc70;
+  color: rgba($color: #ffffff, $alpha: 0.9);
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+  cursor: pointer;
+  border-width: 1px;
+  border-color: #2ecc70;
+  border-style: solid;
+  border-radius: 50px;
+}
+
+.main-button p {
+  font-size: 1.3em;
+  font-weight: 200;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.main-button:hover {
+  background-color: rgba($color: #ffffff, $alpha: 0.9);
+  color: rgba($color: #4072b7, $alpha: 1);
+}
+

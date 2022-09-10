@@ -1,0 +1,48 @@
+<div class="ptop-component pbottom-component" id="body">
+  <div class="row mtop-30">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="row">
+        <div class="col-md-9">
+          <h3 class="recipe-name margin-0 center-text">{{article?.title}}</h3>
+
+          <p class="lighter-text small-text text-color center-text">{{article?.created_at | date: 'MMM dd, yyyy, HH:mm'}}</p>
+
+          <div class="main-image-wrapper">
+            <img src="{{article?.image}}" alt="{{article?.title}}">
+          </div>
+
+
+          <div class="article-text-wrapper">
+            <p #articleContentText>
+              
+            </p>
+
+            <p class="article-writer">
+              <i class="bi bi-person-circle"></i>
+              {{article?.created_by.first_name}} {{article?.created_by.last_name}}
+            </p>
+          </div>
+        
+        </div>
+
+        <div class="col-md-1"></div>
+        <div class="col-md-2">
+          <p class="mtop-30 text-color">
+            Other articles
+          </p>
+          <div *ngFor="let article of otherArticles | slice:0:5" class="mtop-20">
+            <mat-card class="recipe-card" (click)="goToArticle(article.id)">
+              <img mat-card-image src="{{article.image}}" alt="">
+              <mat-card-content>
+                <p class="larger-text margin-0 text-color bolder-text">{{article.title}}</p>
+                <p class="smaller-text lighter-text text-color">{{article.created_at | date: 'MMM dd, yyyy, HH:mm'}}</p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>

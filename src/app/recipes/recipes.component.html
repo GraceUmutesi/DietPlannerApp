@@ -1,0 +1,76 @@
+<div class="ptop-component pbottom-component" id="body">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="mtop-20">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-select [(ngModel)]="recipesFrom" (ngModelChange)="changeRecipesFrom($event)">
+              <mat-option value="system_recipes">System Recipes</mat-option>
+              <mat-option value="my_recipes">My Recipes</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="margin-0" *ngIf="recipesFrom != 'my_recipes'">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Price Range</mat-label>
+          <mat-select [(ngModel)]="rangePrice" (ngModelChange)="changeRangePrice($event)">
+              <mat-option value="">None</mat-option>
+              <mat-option value="less_1000">Less than 1000 RWF</mat-option>
+              <mat-option value="1000_3000">1001 RWF to 3000 RWF</mat-option>
+              <mat-option value="3000_5000">3001 RWF to 5000 RWF</mat-option>
+              <mat-option value="5000_10000">5001 RWF to 10000 RWF</mat-option>
+              <mat-option value="10001_15000">10001 RWF to 15000 RWF</mat-option>
+              <mat-option value="above_15000">Above 15000 RWF</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <p class="text-color">
+        Recipes Categories
+      </p>
+      <div class="cat-chips-wrapper">
+        <div class="cat-chip {{ activatedCategoryId=='' ? 'active' : ''}}" (click)="getRecipes()">
+          All
+        </div>
+        <div *ngFor="let c of recipeCategories" class="cat-chip {{ c.id==activatedCategoryId ? 'active' : ''}}"
+        (click)="getRecipesInCategory(c.id)">
+          <p>{{c.name}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="row mtop-20">
+        <div class="col-md-10">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Search Recipes</mat-label>
+            <input matInput type="text" [(ngModel)]="searchQuery" (ngModelChange)="searchRecipes($event)">
+          </mat-form-field>
+        </div>
+        <div class="col-md-2 mtop-5">
+          <button mat-fab color="primary" aria-label="" (click)="getRecipes()">
+            <mat-icon>search</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3" *ngFor="let recipe of recipes">
+          <mat-card class="recipe-card" (click)="goToRecipes(recipe.id)">
+            <img mat-card-image *ngIf="recipe.image != null" src="{{recipe.image}}" alt="{{recipe.name}}" class="recipe-img">
+            <img mat-card-image *ngIf="recipe.image == null" src="../../assets/img/Your meal planner.png" alt="{{recipe.name}}" class="recipe-img-2">
+            <mat-card-content>
+              <p class="larger-text margin-0 text-color">{{recipe.name}}</p>
+              <p class="small-text lighter-text color-primary">{{recipe.recipe_type.name}}</p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+
+  <div class="new-recipe-btn-wrapper" *ngIf="recipesFrom == 'my_recipes'">
+    <button mat-fab color="primary" aria-label="New recipe" (click)="addNewRecipe()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

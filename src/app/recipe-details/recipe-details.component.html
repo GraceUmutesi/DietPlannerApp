@@ -1,0 +1,100 @@
+<div class="ptop-component pbottom-component" id="body">
+  <div class="row mtop-30">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="row">
+        <div class="col-md-9">
+          <h2 class="recipe-name">{{recipe?.name}}</h2>
+
+          <div class="main-image-wrapper">
+            <img *ngIf="recipe.image != null" src="{{recipe?.image}}" alt="{{recipe?.name}}">
+            <img *ngIf="recipe.image == null" src="../../assets/img/Your meal planner.png" alt="{{recipe?.name}}">
+          </div>
+
+          <div *ngIf="!recipe.sys_recipe">
+            <div *ngIf="showEditImage">
+              <form [formGroup]="imageForm">
+                <div class="form-field">
+                  <input hidden type="file" accept="image/*" (change)="onFileSelected($event)" formControlName="image" #file/>
+                  <mat-label (click)="file.click()" style="cursor: pointer; color: #0a7122; font-family: monospace">
+                    <mat-icon color="primary">file_upload</mat-icon>
+                    <span>{{ fileMessage }}</span>
+                  </mat-label>
+                </div>
+
+                <div>
+                  <button *ngIf="!isLoading" mat-raised-button color="primary" (click)="addRecipeImage(imageForm)"
+                  [disabled]="!imageForm.valid">
+                    Save Image
+                  </button>
+                  <mat-spinner diameter="30" class="loading-indicator" *ngIf="isLoading"></mat-spinner>
+                </div>
+
+              </form>
+            </div>
+
+            <div class="mtop-15">
+              <button mat-raised-button 
+                color="{{showEditImage ? 'warn' : 'primary'}}" 
+                (click)="showEditImage = !showEditImage">{{showEditImage ? 'Cancel Action' : '+ Image'}}</button>
+            </div>
+          </div>
+
+          <h5 class="recipe-type mtop-15">{{recipe?.recipe_type.name}}</h5>
+
+          <hr class="color-primary">
+
+          <p class="large-text text-color">INGREDIENTS</p>
+
+          <ul>
+            <li class="text-color" *ngFor="let ing of recipe?.ingredients">
+              <span class="bold-text text-color">{{ing.food_name}} : </span>
+              <span class="lighter-text text-color">{{ing.quantity}} ({{ing.unit}})</span>
+            </li>
+          </ul>
+
+          <p>
+            <span class="text-color lighter-text">Estimated ingredients cost: </span>
+            <span class="text-color bold-text">{{recipe?.estimated_price}} RWF</span>
+          </p>
+
+          <hr class="color-primary">
+
+          <p class="large-text text-color">DIRECTIONS</p>
+
+          <p class="text-color lighter-text medium-text">
+            {{recipe?.directions}}
+          </p>
+
+          <hr class="color-primary">
+
+          <p class="large-text text-color">NUTRITIONAL VALUE</p>
+
+          <ul>
+            <li class="text-color" *ngFor="let nut of recipe?.nutritional_value">
+              <span class="bold-text text-color">{{nut.name}} : </span>
+              <span class="lighter-text text-color">{{nut.value}} ({{nut.unit}})</span>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-2">
+          <p class="mtop-30 text-color">
+            Other recipes
+          </p>
+          <div *ngFor="let recipe of otherRecipes | slice:0:5" class="mtop-20">
+            <mat-card class="recipe-card" (click)="goToRecipes(recipe.id)">
+              <img mat-card-image *ngIf="recipe.image != null" src="{{recipe.image}}" alt="">
+              <img mat-card-image *ngIf="recipe.image == null" src="../../assets/img/Your meal planner.png" alt="">
+              <mat-card-content>
+                <p class="larger-text margin-0 text-color">{{recipe.name}}</p>
+                <p class="small-text lighter-text color-primary">{{recipe.recipe_type.name}}</p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>

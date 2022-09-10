@@ -1,0 +1,65 @@
+
+.recipe-card {
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.cat-chips-wrapper {
+  margin-top: 20px;
+}
+
+.cat-chip.active {
+  padding: 7px 20px;
+  background-color: rgba($color: #2ecc70, $alpha: 1);
+  color: rgba($color: #fff, $alpha: 0.9);
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+  cursor: pointer;
+  border-radius: 30px;
+  border-width: 1px;
+  border-color: #2ecc70;
+  border-style: solid;
+  display: inline-flex;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.cat-chip {
+  padding: 7px 20px;
+  color: rgba($color: #2ecc70, $alpha: 1);
+  background-color: rgba($color: #fff, $alpha: 0.9);
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+  cursor: pointer;
+  border-radius: 30px;
+  border-width: 1px;
+  border-color: #2ecc70;
+  border-style: solid;
+  display: inline-flex;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.cat-chip:hover {
+  background-color: rgba($color: #2ecc70, $alpha: 1);
+  color: rgba($color: #fff, $alpha: 0.9);
+}
+
+.cat-chip p {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.recipe-img {
+  height: 140px;
+  background-color: black;
+}
+
+.recipe-img-2 {
+  height: 140px;
+  background-color: black;
+}
+
+.new-recipe-btn-wrapper {
+  position: fixed;
+  right: 20px;
+  bottom: 60px;
+}

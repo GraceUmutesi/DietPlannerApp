@@ -1,0 +1,87 @@
+<div id="body" class="ptop-component pbottom-component">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <h5 class="mtop-20 color-primary">New Meal Plan</h5>
+      <form [formGroup]="newMealPlanForm">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Meal Plan Name</mat-label>
+          <input matInput type="text" formControlName="name">
+          <mat-error *ngIf="!newMealPlanForm.get('name').valid">
+            Field Required
+          </mat-error>
+        </mat-form-field>
+
+        <p class="margin-0 bold-text">Daily Meals</p>
+
+        <div formArrayName="meals" *ngFor="let meal of newMealPlanForm.get('meals')['controls']; let i=index">
+          <div [formGroupName]="i" class="mtop-5">
+            <div class="row">
+              <div class="col-md-2">
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Day</mat-label>
+                  <mat-select formControlName="day">
+                    <mat-option value="Monday">Monday</mat-option>
+                    <mat-option value="Tuesday">Tuesday</mat-option>
+                    <mat-option value="Wednesday">Wednesday</mat-option>
+                    <mat-option value="Thursday">Thursday</mat-option>
+                    <mat-option value="Friday">Friday</mat-option>
+                    <mat-option value="Saturday">Saturday</mat-option>
+                    <mat-option value="Sunday">Sunday</mat-option>
+                </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="col-md-2">
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Time</mat-label>
+                  <mat-select formControlName="time">
+                    <mat-option value="Breakfast">Breakfast</mat-option>
+                    <mat-option value="Lunch">Lunch</mat-option>
+                    <mat-option value="Dinner">Dinner</mat-option>
+                </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="col-md-7">
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Recipe</mat-label>
+                  <mat-select formControlName="recipe">
+                    <mat-option *ngFor="let recipe of recipes" [value]="recipe">
+                      {{recipe.name}} - {{recipe.recipe_type.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+    
+              <div class="col-md-1">
+                <button mat-icon-button color="warn" aria-label="Deleted food" (click)="removeMeal(i)">
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mtop-15-minus">
+          <button mat-flat-button (click)="addAnotherMeal()" color="primary">Add Meal</button>
+        </div>
+
+        <div class="full-width mtop-15">
+          <button *ngIf="!isLoading" mat-raised-button color="primary" (click)="createMealPlan()" class="full-width"
+                [disabled]="!newMealPlanForm.valid">CREATE MEAL PLAN</button>
+          <mat-spinner diameter="30" class="loading-indicator" *ngIf="isLoading"></mat-spinner>
+        </div>
+
+        <div class="alert alert-danger mtop-15" role="alert" *ngIf="newMealPlanError">
+          Something went wrong, please try again
+        </div>
+
+        <div class="alert alert-success mtop-15" role="alert" *ngIf="newMealPlanSuccess">
+          New Meal Plan Created Successfully!
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

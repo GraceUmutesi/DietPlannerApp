@@ -1,0 +1,87 @@
+.new-recipe-btn-wrapper {
+  position: fixed;
+  right: 20px;
+  bottom: 60px;
+}
+
+.meal-plans-col {
+  padding-left: 0!important;
+}
+
+.meal-plans-wrapper {
+  // position: fixed;
+  // width: 300px;
+  height:100vh;
+  overflow: scroll; 
+  left: 0;
+  right: 0;
+  // background-color: rgba($color: #2ecc70, $alpha: 0.1);
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.meal-plans-content-wrapper {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.selected-meal-plan-wrapper {
+  height:100vh;
+  overflow: scroll; 
+  left: 0;
+  right: 0;
+  background-color: rgba($color: #2ecc70, $alpha: 0.1);
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.meal-plan-content-wrapper {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.day-recip-wrapper {
+  max-width: 128px;
+  max-height: 156px;
+}
+
+.day-meal {
+  // cursor: pointer;
+  background-color: rgba($color: #fff, $alpha: 1.0);
+  padding-bottom: 4px;
+  box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
+}
+
+.day-meal p {
+  font-size: 0.8em;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-weight: bold;
+  padding-top: 3px;
+}
+
+.recipe-img {
+  background-color: rgba($color: #000, $alpha: 1.0);
+  height: 90px;
+  min-width: 100%;
+}
+
+.recipe-img-2 {
+  background-color: rgba($color: #000, $alpha: 1.0);
+  height: 90px;
+  min-width: 100%;
+}
+
+@media print {
+  .noprint {
+    visibility: hidden;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+  }
+}
+
+// .meal-plans-title {
+//   position: fixed;
+// }

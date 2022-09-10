@@ -1,0 +1,19 @@
+<div class="ptop-component pbottom-component" id="body">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="row">
+        <div class="col-md-4 mtop-20" *ngFor="let article of articles">
+          <mat-card class="article-card" (click)="goToArticle(article.id)">
+            <img mat-card-image src="{{article.image}}" alt="{{article.title}}" class="article-img">
+            <mat-card-content>
+              <p class="larger-text margin-0 text-color bolder-text">{{article.title}}</p>
+              <p class="smaller-text lighter-text text-color">{{article.created_at | date: 'MMM dd, yyyy, HH:mm'}}</p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<header id="header" class="fixed-header">
+  <div class="sticky-header">
+    <div class="logo" id="logo-light" routerLink="/home" (click)="smoothScrollToHomeSection('home-top-section')">
+      <img src="{{logoPath}}" alt="Diet Planner" class="img-fluid color-white"/>
+    </div>
+    <nav>
+      <ul>
+        <li><a class="lighter-text" routerLink="/home">Home</a></li>
+        <li><a class="lighter-text" routerLink="/recipes">Recipes</a></li>
+        <li><a class="lighter-text" routerLink="/meal-plans">Meal Plans</a></li>
+        <li><a  class="lighter-text" routerLink="/articles">Articles</a></li>
+        <li></li>
+        <li *ngIf="!isLoggedIn" id="login"><a class="lighter-text" routerLink="/login">Login</a></li>
+        <li *ngIf="isLoggedIn" (click)="viewProfile = !viewProfile">
+          <span class="profile-icon">
+            <i class="bi bi-person-circle"></i>
+          </span>
+        </li>
+      </ul>
+    </nav>
+    <div id="hamburger-icon-2" class="{{phoneMenuOpened ? 'open' : ''}}" (click)="toggleMobileMenu()">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+      <ul class="mobile-menu primary-background">
+        <li><a class="lighter-text" routerLink="/home">Home</a></li>
+        <li><a class="lighter-text" routerLink="/recipes">Recipes</a></li>
+        <li><a class="lighter-text" routerLink="/meal-plans">Meal Plans</a></li>
+        <li><a class="lighter-text" routerLink="/articles">Articles</a></li>
+        <li></li>
+        <li *ngIf="!isLoggedIn" id="login"><a class="lighter-text" routerLink="/login">Login</a></li>
+        <li *ngIf="isLoggedIn" (click)="viewProfile = !viewProfile">
+          <span class="profile-icon">
+            <i class="bi bi-person-circle"></i>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="user-profile" *ngIf="viewProfile">
+    <p class="center-text username">{{userData?.first_name}} {{userData?.last_name}}</p>
+    <p class="center-text email">{{userData?.username}}</p>
+    <div class="logout-button mtop-20" (click)="logout()">
+      <p class="margin-0">Logout</p>
+    </div>
+  </div>
+
+  <div class="progress" *ngIf="isLoading">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+  </div>
+</header>
+
